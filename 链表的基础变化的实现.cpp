@@ -7,28 +7,28 @@
 typedef int Status;
 typedef int ElemType;
 
-//Á´±í
-//¶¨ÒåÊı¾İÓòÄÚÈİ 
+//é“¾è¡¨
+//å®šä¹‰æ•°æ®åŸŸå†…å®¹ 
 typedef struct student{
 	char num[8]; 
 	char name[8]; 
 	int score; 
-}student;//¶¨ÒåÊı¾İ¿â£ºÑ§ºÅ£¬ĞÕÃû£¬³É¼¨ 
-//¶¨Òå½áµã 
+}student;//å®šä¹‰æ•°æ®åº“ï¼šå­¦å·ï¼Œå§“åï¼Œæˆç»© 
+//å®šä¹‰ç»“ç‚¹ 
 typedef struct Lnode{
-	student data;//Êı¾İÓò 
-	struct Lnode *next;//Ö¸ÕëÓò 
+	student data;//æ•°æ®åŸŸ 
+	struct Lnode *next;//æŒ‡é’ˆåŸŸ 
 }Lnode,*LinkList; 
  
  
-//µ¥Á´±íµÄ³õÊ¼»¯
+//å•é“¾è¡¨çš„åˆå§‹åŒ–
 Status InitList_L(LinkList &L){
-	L = new Lnode;//»ò L = (LinkList) malloc (sizeof(Lnode)); 
+	L = new Lnode;//æˆ– L = (LinkList) malloc (sizeof(Lnode)); 
 	L->next=NULL;
 	return OK;
 }
 
-//ÅĞ¶ÏÁ´±íÊÇ·ñÎª¿Õ
+//åˆ¤æ–­é“¾è¡¨æ˜¯å¦ä¸ºç©º
 Status ListEmpty(LinkList L){
 	if(L->next)
 		return 0;
@@ -36,7 +36,7 @@ Status ListEmpty(LinkList L){
 		return 1;
 }
 
-//Ïú»Ùµ¥Á´±íL
+//é”€æ¯å•é“¾è¡¨L
 Status DestoryList_L(LinkList &L){
 	Lnode *p;
 	while(L){
@@ -46,7 +46,7 @@ Status DestoryList_L(LinkList &L){
 	}
 }
 
-//Çå¿Õµ¥Á´±í
+//æ¸…ç©ºå•é“¾è¡¨
 Status ClearList(LinkList &L){
 	Lnode *p,*q;
 	p = L->next;
@@ -59,7 +59,7 @@ Status ClearList(LinkList &L){
 	return OK;
 } 
 
-//ÇóÁ´±íµÄ³¤¶È²¢·µ»Ø 
+//æ±‚é“¾è¡¨çš„é•¿åº¦å¹¶è¿”å› 
 Status ListLength_L(LinkList L){
 	LinkList p;
 	p = L->next;
@@ -71,8 +71,7 @@ Status ListLength_L(LinkList L){
 	return i;
 }
 
-//´ÓÁ´±íÖĞÕÒµ½µÚi¸öÔªËØ£¬²¢½«ÄÚÈİ¸³Öµ¸øe
-/*
+//ä»é“¾è¡¨ä¸­æ‰¾åˆ°ç¬¬iä¸ªå…ƒç´ ï¼Œå¹¶å°†å†…å®¹èµ‹å€¼ç»™e
 Status GetElem_L(LinkList L,int i,student &e){
 	LinkList p = L->next;
 	int j=1;
@@ -81,13 +80,13 @@ Status GetElem_L(LinkList L,int i,student &e){
 		++j;
 	}
 	if(!p||j>i)
-	return ERROR;//µÚi¸öÔªËØ²»´æÔÚ 
-	student e = p->data;
+	return ERROR;//ç¬¬iä¸ªå…ƒç´ ä¸å­˜åœ¨ 
+	e = p->data;
 	return OK;
 }
-*/
 
-//°´Öµ²éÕÒÖ¸¶¨Êı¾İ²¢·µ»ØÖ¸Õë 
+
+//æŒ‰å€¼æŸ¥æ‰¾æŒ‡å®šæ•°æ®å¹¶è¿”å›æŒ‡é’ˆ 
 Lnode*LocateElem_L(LinkList L,student e){
 	LinkList p=L->next;
 	while(p!=0&&p->data.num!=e.num)
